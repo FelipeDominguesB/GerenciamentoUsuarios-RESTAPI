@@ -30,8 +30,8 @@ module.exports = function(app){
     
     
     route.post([
-            check('nome', 'O nome é obrigatório').notEmpty(),
-            check('email', "O email é obrigatório").notEmpty().isEmail()
+            check('_name', 'O nome é obrigatório').notEmpty(),
+            check('_email', "O email é obrigatório").notEmpty().isEmail()
                 ], (request, response)=>{
                 
             
