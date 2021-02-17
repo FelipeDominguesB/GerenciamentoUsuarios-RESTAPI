@@ -2,7 +2,6 @@ var express = require('express');
 var restify = require('restify-clients');
 
 var assert = require('assert');
-const { json } = require('express');
 var router = express.Router();
 
 
@@ -39,7 +38,7 @@ router.put('/:id', function(req, res, next) {
 
 
 router.delete('/:id', function(req, res, next) {
-  client.delete(`/users/${req.params.id}`, (err, request, response, obj) =>{
+  client.del(`/users/${req.params.id}`, (err, request, response, obj) =>{
     assert.ifError(err);
     
     res.json(obj);

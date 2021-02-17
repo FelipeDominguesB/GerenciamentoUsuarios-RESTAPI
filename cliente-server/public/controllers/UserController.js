@@ -92,10 +92,13 @@ class UserController{
 
             user.loadFromJSON(JSON.parse(tr.dataset.user));
             
-            user.remove();
+            user.remove().then(data =>{
+                console.log(data);
+                tr.remove();
+                this.updateCount();
+            });
 
-            tr.remove();
-            this.updateCount();
+            
             }
         })
 
@@ -241,7 +244,7 @@ class UserController{
      selectAll()
      {
 
-        HttpRequest.get('/users').then((data) =>{
+        User.getUserStorage().then((data) =>{
             data.users.forEach((element, index, array) =>{
                 let user = new User();
                 user.loadFromJSON(element);
